@@ -26,37 +26,16 @@ module.exports = {
                 test: /\.(jpg|jpeg|png|svg)/,
                 use: ['file-loader']
             },
-            {
-                test: /\.m?js$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: "babel-loader",
-                    options: {
-                        presets: ['@babel/preset-env']
-                    }
-                }
-            },
-            {
-                test: /\.m?jsx$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: "babel-loader",
-                    options: {
-                        presets: ["@babel/preset-react"]
-                    }
-                }
-            },
-            {
+             {
                 test: /\.m?ts$/,
                 exclude: /node_modules/,
                 use: {
                     loader: "babel-loader",
                     options: {
-                        presets: ["@babel/preset-typescript"]
+                        presets: ['@babel/preset-env',"@babel/preset-react","@babel/preset-typescript"]
                     }
                 }
-            }
-
+            },
         ]
     }
 }
