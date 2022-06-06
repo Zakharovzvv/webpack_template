@@ -6,16 +6,18 @@ const {resolve} = require("@babel/core/lib/vendor/import-meta-resolve");
 
 module.exports = {
     mode: "development",
-    entry: ["@babel/polyfill", "./src/index.ts"],//update entry point file name
+    entry: ["@babel/polyfill", "./src/index.js"],
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: "[name].[hash].js"
+        filename: "[name].[hash].js",
+        publicPath:"/"
     },
     resolve: {
         extensions: [".js", ".jsx", ".ts", ".tsx"]
     },
     devServer: {
-        port: 3000
+        port: 3000,
+        historyApiFallback: true
     },
     plugins: [
         new HTMLWebpackPlugin({template: "./src/index.html"}),
@@ -32,7 +34,7 @@ module.exports = {
                 use: ['file-loader']
             },
             {
-                test: /\.(js|ts|jsx|tsx)$/,
+                test: /\.(js|ts|jsx|tsx)$/, //m?jsx
                 exclude: /node_modules/,
                 use: {
                     loader: "babel-loader",
